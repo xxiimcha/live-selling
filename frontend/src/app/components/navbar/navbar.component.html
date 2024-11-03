@@ -1,0 +1,94 @@
+<nav class="navbar navbar-top navbar-expand-md navbar-dark" id="navbar-main">
+  <div class="container-fluid">
+      <!-- Brand -->
+      <a class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active"
+          [routerLink]="['/dashboard']"></a>
+      <!-- Form -->
+      <!-- <form class="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
+          <div class="form-group mb-0" [ngClass]="{ 'focused': focus === true }">
+              <div class="input-group input-group-alternative">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="fas fa-search"></i></span>
+                  </div>
+                  <input class="form-control" placeholder="Search" type="text" (focus)="focus = true"
+                      (blur)="focus = false">
+              </div>
+          </div>
+      </form> -->
+      <ul class="navbar-nav align-items-center d-none d-md-flex">
+          <li class="nav-item" ngbDropdown placement="bottom-right">
+              <a class="nav-link" role="button" ngbDropdownToggle>
+                  <div class="media align-items-center">
+                      <span class="avatar avatar-sm rounded-circle">
+                          <img alt="Image placeholder" src="assets/img/theme/team-4-800x800.jpg">
+                      </span>
+                      <div class="media-body ml-2 d-none d-lg-block">
+                          <span class="mb-0 text-sm font-weight-bold">{{ fullName }}</span>
+                      </div>
+                  </div>
+              </a>
+              <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
+                  <div class="dropdown-header noti-title">
+                      <h6 class="text-overflow m-0">Welcome!</h6>
+                  </div>
+                  <a routerLinkActive="active" (click)="navigateToProfile()" class="dropdown-item">
+                      <i class="ni ni-single-02"></i>
+                      <span>My profile</span>
+                  </a>
+                  <div class="dropdown-divider"></div>
+                  <a (click)="logout()" class="dropdown-item">
+                      <i class="ni ni-user-run"></i>
+                      <span>Logout</span>
+                  </a>
+              </div>
+          </li>
+          <li class="nav-item" ngbDropdown placement="bottom-right">
+              <a class="nav-link nav-link-icon" role="button" ngbDropdownToggle>
+                  <i class="ni ni-bell-55"></i>
+                  <span class="badge badge-danger" *ngIf="items && items.length > 0">{{ items.length }}</span>
+              </a>
+              <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu style="max-height: 300px; overflow-y: auto; width: 350px;">
+                  <div class="dropdown-header noti-title">
+                      <h6 class="text-overflow m-0">Notifications</h6>
+                  </div>
+                  <a *ngFor="let i of items" class="dropdown-item" (click)="viewItem(i.category, i.id)" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                      <i class="ni ni-bullet-list-67 mr-2"></i>
+                      Running out of stocks for {{ i.item_code }}
+                  </a>
+                  <div *ngIf="items.length === 0" class="dropdown-item text-center">
+                      No notifications
+                  </div>
+              </div>
+          </li>
+      </ul>
+  </div>
+</nav>
+
+<style>
+  /* Enhancements for the avatar and badge */
+  .avatar-sm {
+      width: 35px;
+      height: 35px;
+  }
+
+  .badge-danger {
+      background-color: #ff4757;
+      border-radius: 50%;
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 0.75rem;
+      padding: 5px 7px;
+  }
+
+  /* Dropdown style for notifications */
+  .dropdown-item {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+  }
+
+  .dropdown-item:hover {
+      background-color: #f8f9fa;
+  }
+</style>

@@ -1,0 +1,131 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+	<!-- Mask -->
+	<span class="mask bg-gradient-primary opacity-8"></span>
+	<!-- Header container -->
+	<div class="container-fluid d-flex align-items-center">
+		<div class="row">
+		</div>
+	</div>
+</div>
+<div class="container-fluid mt--7">
+	<div class="row" *ngIf="user_profile">
+		<div class="col-xl order-xl-1">
+			<div class="card bg-secondary shadow">
+				<div class="card-header bg-white border-0">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0">My account</h3>
+						</div>
+						<div class="col-4 text-right">
+							<button *ngIf="!editProfile" href="#!" class="btn btn-sm btn-primary" (click)="editProfile = true">Update</button>
+							<button *ngIf="editProfile" href="#!" class="btn btn-sm btn-success" (click)="saveProfile()">Save</button>
+							<button *ngIf="editProfile" href="#!" class="btn btn-sm btn-danger" (click)="editProfile = false">Cancel</button>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<form>
+						<h6 class="heading-small text-muted mb-4">User information</h6>
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="email_address">Email address</label>
+										<input type="text" class="form-control" id="email_address" [(ngModel)]="user_profile.email" name="email_address" [disabled]="!editProfile">
+									</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="first_name">First name</label>
+										<input type="text" class="form-control" id="first_name" [(ngModel)]="user_profile.first_name" name="first_name" [disabled]="!editProfile">
+									</div>
+								</div>
+								<div class="col-lg-6">
+									<div class="form-group">
+										<label for="last_name">Last name</label>
+										<input type="text" class="form-control" id="last_name" [(ngModel)]="user_profile.last_name" name="last_name" [disabled]="!editProfile">
+									</div>
+								</div>
+							</div>
+						</div>
+						<hr class="my-4" />
+						<!-- Address -->
+						<h6 class="heading-small text-muted mb-4">Contact information</h6>
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label for="contact_number">Contact Number</label>
+										<input type="text" class="form-control" id="contact_number" [(ngModel)]="user_profile.contact_number" name="contact_number" [disabled]="!editProfile">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label class="form-control-label" for="input-address">Address</label>
+										<input id="input-address" class="form-control form-control-alternative"
+											placeholder="Home Address" type="text"[(ngModel)]="user_profile.address"  [disabled]="!editProfile">
+									</div>
+								</div>
+								<div class="col-md-2">
+									<div class="form-group">
+										<label class="form-control-label" for="input-city">Zip Code</label>
+										<input type="text" id="input-city" class="form-control form-control-alternative"
+											placeholder="City" [(ngModel)]="user_profile.zipcode" [disabled]="!editProfile">
+									</div>
+								</div>
+							</div>
+							<!-- 
+							<div class="row">
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label class="form-control-label" for="input-city">City</label>
+										<input type="text" id="input-city" class="form-control form-control-alternative"
+											placeholder="City" value="New York">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label class="form-control-label" for="input-country">Country</label>
+										<input type="text" id="input-country"
+											class="form-control form-control-alternative" placeholder="Country"
+											value="United States">
+									</div>
+								</div>
+								<div class="col-lg-4">
+									<div class="form-group">
+										<label class="form-control-label" for="input-country">Postal code</label>
+										<input type="number" id="input-postal-code"
+											class="form-control form-control-alternative" placeholder="Postal code">
+									</div>
+								</div>
+							</div> -->
+						</div>
+						<hr class="my-4" />
+						<h6 class="heading-small text-muted mb-4">Password</h6>
+						<div class="pl-lg-4">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label for="password">Password</label>
+										<input type="password" class="form-control" id="password" [(ngModel)]="user_profile.password" name="password" [disabled]="!editProfile">
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- <hr class="my-4" />
+						<h6 class="heading-small text-muted mb-4">About me</h6>
+						<div class="pl-lg-4">
+							<div class="form-group">
+								<label>About Me</label>
+								<textarea rows="4" class="form-control form-control-alternative"
+									placeholder="A few words about you ...">A beautiful Dashboard for Bootstrap 4. It is Free and Open Source.</textarea>
+							</div>
+						</div> -->
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

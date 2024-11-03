@@ -1,0 +1,69 @@
+.chat-container {
+  position: fixed;
+  bottom: 0;
+  right: 20px;
+  width: 300px;
+  background-color: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.chat-header {
+  background-color: #007bff;
+  color: white;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.chat-messages {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #5e72e4;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+.message-container {
+  display: flex;
+  margin: 5px 0;
+}
+
+.owner-message {
+  justify-content: flex-start; // Aligns messages to the right
+}
+
+.customer-message {
+  justify-content: flex-end; // Aligns messages to the left
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 10px;
+  border-radius: 5px;
+  color: #fff;
+}
+
+.owner-message .message-content {
+  background-color: #629e70; // Owner's message color
+}
+
+.customer-message .message-content {
+  background-color: #5e72e4; // Customer's message color
+}
+.message-image {
+  width: 5in;
+  height: 5in;
+  object-fit: cover;
+  border-radius: 5px;
+}

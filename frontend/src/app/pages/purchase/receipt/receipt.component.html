@@ -1,0 +1,88 @@
+<!-- item-form.component.html -->
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-0 text-white">Receipt</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card-body">
+                <div class="invoice-box">
+                    <table>
+                        <tr class="top">
+                            <td colspan="2">
+                                <table>
+                                    <tr>
+                                        <td class="title">
+                                            <img src="./assets/img/brand/red.png" alt="Company logo" style="width: 20%; max-width: 300px" />
+                                        </td>
+
+                                        <td>
+                                            Invoice #: {{ purchaseDetails?.sales_invoice }}<br />
+                                            Created: {{ purchaseDetails?.created_at }}<br />
+                                            Due: {{ purchaseDetails?.due_by }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr class="information">
+                            <td colspan="2">
+                                <table>
+                                    <tr>
+                                        <td>
+                                            Jewels Jewel<br />
+                                            <!-- 12345 Sunny Road<br />
+                                            Sunnyville, TX 12345 -->
+                                        </td>
+
+                                        <td>
+                                            {{ purchaseDetails?.ordered_by_name }}<br />
+                                            {{ purchaseDetails?.ordered_by }}
+                                        </td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+
+                        <tr class="heading">
+                            <td>Payment Method</td>
+
+                            <td></td>
+                        </tr>
+
+                        <tr class="details">
+                            <td>Cash/Gcash/Paymaya/Bank Transfer</td>
+
+                            <td></td>
+                        </tr>
+
+                        <tr class="heading">
+                            <td>Item</td>
+
+                            <td>Price</td>
+                        </tr>
+
+                        <tr class="item">
+                            <td>{{ purchaseDetails?.item_name }}</td>
+
+                            <td>P{{ purchaseDetails?.total_amount }}</td>
+                        </tr>
+
+                        <tr class="total">
+                            <td></td>
+
+                            <td>Total: P{{ purchaseDetails?.total_amount }}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

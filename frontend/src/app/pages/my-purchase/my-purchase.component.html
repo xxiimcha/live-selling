@@ -1,0 +1,53 @@
+<div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
+	<!-- Mask -->
+	<span class="mask bg-gradient-primary opacity-8"></span>
+	<!-- Header container -->
+	<div class="container-fluid d-flex align-items-center">
+		<div class="row">
+		</div>
+	</div>
+</div>
+<div class="container-fluid mt--7">
+	<div class="row">
+		<div class="col-xl order-xl-1">
+			<div class="card bg-secondary shadow">
+				<div class="card-header bg-white border-0">
+					<div class="row align-items-center">
+						<div class="col-8">
+							<h3 class="mb-0">My Purchase List</h3>
+						</div>
+					</div>
+				</div>
+				<div class="card-body">
+					<div class="row">
+						<div class="col">
+							<div class="card shadow">
+								<div class="table-responsive">
+									<table class="table align-items-center table-flush">
+										<thead class="thead-light">
+											<tr>
+												<th scope="col">Item Code</th>
+												<th scope="col">Qty</th>
+												<th scope="col">Status</th>
+											</tr>
+										</thead>
+										<tbody *ngIf="purchaseList?.length > 0">
+											<tr *ngFor="let item of purchaseList">
+												<td>{{ item.item_code }}</td>
+												<td>{{ item.qty }}</td>
+												<td>{{ item.status }}</td>
+											</tr>
+											<tr *ngIf="(purchaseList?.length || 0) === 0">
+												<td colspan="3">NO DATA</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

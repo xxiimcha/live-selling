@@ -1,0 +1,33 @@
+<!-- item-form.component.html -->
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-0 text-white">QR Code</h3>
+            </div>
+            <div class="col-6 d-flex justify-content-end">
+                <button type="button" class="btn btn-warning mb-0 ms-auto" (click)="downloadQr()">Download QR</button>
+                <button type="button" class="btn btn-primary mb-0 ms-2" (click)="navigateBack()">Back</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card shadow">
+                <div class="card-body">
+                    <div class="col d-flex justify-content-center" #qrCodeCanvas>
+                        <qr-code 
+                            [value]="currentURL"
+                            size="650" 
+                            errorCorrectionLevel="H"
+                            centerImageSize="150"
+                        >
+                        </qr-code>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

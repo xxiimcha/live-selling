@@ -1,0 +1,25 @@
+<!-- item-form.component.html -->
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6">
+                <h3 class="mb-0 text-white">Mine Facility</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid mt--7">
+    <div class="row">
+        <div class="col">
+            <div class="card-header" *ngIf="itemOnSale.item_code">
+                <h2 class="mb-0"> {{ itemOnSale.description }}</h2>
+            </div>
+            <div class="card-body">
+                <div class="col-12 d-flex justify-content-center">
+                    <!-- Applying custom-size class -->
+                    <button type="button" class="btn btn-warning custom-size mb-0 ms-auto" (click)="customerMine(itemOnSale.item_code)" [disabled]="!itemOnSale.item_code">MINE</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

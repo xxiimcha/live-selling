@@ -1,0 +1,83 @@
+<div class="header bg-gradient-primary pb-8 pt-5 pt-md-8">
+  <div class="container-fluid">
+      <div class="row">
+          <div class="col-6">
+              <h3 class="mb-0 text-white">Chat Customer</h3>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div class="container-fluid mt--7">
+  <div class="row">
+      <div class="col-4">
+          <div class="card shadow" style="border-radius: 10px;">
+              <input type="text" class="form-control mb-2" placeholder="Search" [(ngModel)]="searchQuery" (input)="search()" style="border-radius: 5px;">
+              <div class="table-responsive">
+                  <table class="table align-items-center table-flush">
+                      <tbody>
+                          <tr *ngFor="let customer of paginatedCustomer">
+                              <td (click)="openChatHistory(customer)"
+                                  style="cursor: pointer; color: #007bff; font-weight: 500; padding: 10px; border-radius: 5px; transition: background-color 0.2s;">
+                                  {{ customer.first_name }} {{ customer.last_name }}
+                              </td>
+                          </tr>
+                          <tr *ngIf="paginatedCustomer.length === 0">
+                              <td>NO Customer</td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <div class="pagination d-flex justify-content-end mt-3">
+                  <button class="btn btn-sm btn-outline-primary mx-1" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">Previous</button>
+                  <ng-container *ngFor="let page of visiblePages()">
+                      <button class="btn btn-sm btn-outline-primary mx-1" [class.active]="currentPage === page" (click)="goToPage(page)">{{ page }}</button>
+                  </ng-container>
+                  <button class="btn btn-sm btn-outline-primary mx-1" [disabled]="currentPage === totalPages()" (click)="goToPage(currentPage + 1)">Next</button>
+              </div>
+          </div>
+      </div>
+
+      <div class="col-6" *ngIf="customerId != 0">
+          <div class="card shadow" style="border-radius: 10px;">
+              <div class="card-body">
+                  <div class="chat-messages" style="max-height: 550px; overflow-y: auto; background-color: white; padding: 10px; border-radius: 5px; min-height: 550px;">
+                      <strong>{{ customerName }}</strong>
+                      <div class="message-container" *ngFor="let msg of messagesHistory" [ngClass]="msg.sender_id === currentUser ? 'customer-message' : 'owner-message'">
+                          <div class="message-content">{{ msg.content }}</div>
+                          <div *ngIf="msg.attachments">
+                              <img [src]="msg.attachments" alt="Attachment" class="message-image" />
+                          </div>
+                      </div>
+                  </div>
+                  <div style="display: grid; gap: 10px; margin-top: 10px;">
+                      <input [(ngModel)]="customerMessage" class="form-control" (keypress)="($event.key === 'Enter') ? sendCustomerMessage() : null" placeholder="Type a message..." style="border-radius: 5px;" />
+                      <input type="file" (change)="onFileSelected($event)" class="form-control" accept="image/*" style="border-radius: 5px;" />
+                      <button class="btn btn-primary btn-sm" (click)="sendCustomerMessage()">Send</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<style>
+  /* Remove underline and add hover effect for customer names */
+  td[style*="cursor: pointer;"] {
+      text-decoration: none;
+  }
+  td[style*="cursor: pointer;"]:hover {
+      background-color: #f8f9fa;
+      color: #0056b3;
+  }
+
+  /* Pagination button styles */
+  .pagination .btn-outline-primary {
+      border-color: #007bff;
+      color: #007bff;
+  }
+  .pagination .btn-outline-primary:hover, .pagination .btn-outline-primary.active {
+      background-color: #007bff;
+      color: white;
+  }
+</style>
