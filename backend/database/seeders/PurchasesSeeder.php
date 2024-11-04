@@ -28,7 +28,7 @@ class PurchasesSeeder extends Seeder
                 'item_code' => $items->random()->item_code,
                 'ordered_by' => $customers->random()->email,
                 'qty' => rand(1, 20),
-                'status' => null, 
+                'status' => null,
                 'total_amount' => number_format(rand(1, 1000) / 100, 2),
                 'created_at' => $randomDate,
                 'updated_at' => $randomDate

@@ -1,69 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- DataTables CSS and JS -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+</head>
+<body>
+
 <div class="header pb-8 pt-5 pt-lg-8 d-flex align-items-center">
-	<!-- Mask -->
-	<span class="mask bg-gradient-primary opacity-8"></span>
-	<!-- Header container -->
-	<div class="container-fluid d-flex align-items-center">
-		<div class="row">
-		</div>
-	</div>
+    <!-- Mask -->
+    <span class="mask bg-gradient-primary opacity-8"></span>
+    <!-- Header container -->
+    <div class="container-fluid d-flex align-items-center">
+        <div class="row">
+        </div>
+    </div>
 </div>
 <div class="container-fluid mt--7">
-	<div class="row">
-		<div class="col-xl order-xl-1">
-			<div class="card bg-secondary shadow">
-				<div class="card-header bg-white border-0">
-					<div class="row align-items-center">
-						<div class="col-8">
-							<h3 class="mb-0">Item List</h3>
-						</div>
-					</div>
-				</div>
-				<div class="card-body">
-					<div class="row">
-						<div class="col">
-							<div class="card shadow">
-								<div class="table-responsive">
-									<table class="table align-items-center table-flush">
-										<thead class="thead-light">
-											<tr>
-												<th scope="col">Item Code</th>
-												<th scope="col">Item Name</th>
-												<th scope="col">Item Description</th>
-												<th scope="col">Category</th>
-												<th scope="col">Sizes</th>
-												<th scope="col"></th>
-											</tr>
-										</thead>
-										<tbody>
-											<tr *ngFor="let item of items">
-												<td>{{ item.item_code }}</td>
-												<td>{{ item.item_name }}</td>
-												<td>{{ item.item_description }}</td>
-												<td>{{ item.category }}</td>
-												<td>{{ item.sizes }}</td>
-												<td class="text-right">
-													<div ngbDropdown placement="bottom-right">
-														<a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
-															<i class="fas fa-ellipsis-v"></i>
-														</a>
-														<div ngbDropdownMenu class=" dropdown-menu-right dropdown-menu-arrow">
-															<a class="dropdown-item" href="javascript:void(0)" (click)="nextItem(item)">Next Item for Live Selling</a>
-															<a class="dropdown-item" href="javascript:void(0)" (click)="minerList(item.item_code)">Miner List</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-											<tr *ngIf="items.length === 0">
-												<td colspan="6">NO DATA</td>
-											</tr>
-										</tbody>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <div class="row">
+        <div class="col-xl order-xl-1">
+            <div class="card bg-secondary shadow">
+                <div class="card-header bg-white border-0">
+                    <div class="row align-items-center">
+                        <div class="col-8">
+                            <h3 class="mb-0">Item List</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col">
+                            <div class="card shadow">
+                                <div class="table-responsive">
+                                    <table id="itemTable" class="table align-items-center table-flush">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th scope="col">Item Code</th>
+                                                <th scope="col">Item Name</th>
+                                                <th scope="col">Item Description</th>
+                                                <th scope="col">Category</th>
+                                                <th scope="col">Sizes</th>
+                                                <th scope="col"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of items">
+                                                <td>{{ item.item_code }}</td>
+                                                <td>{{ item.item_name }}</td>
+                                                <td>{{ item.item_description }}</td>
+                                                <td>{{ item.category }}</td>
+                                                <td>{{ item.sizes }}</td>
+                                                <td class="text-right">
+                                                    <div ngbDropdown placement="bottom-right">
+                                                        <a class="btn btn-sm btn-icon-only text-light" ngbDropdownToggle>
+                                                            <i class="fas fa-ellipsis-v"></i>
+                                                        </a>
+                                                        <div ngbDropdownMenu class="dropdown-menu-right dropdown-menu-arrow">
+                                                            <a class="dropdown-item" href="javascript:void(0)" (click)="nextItem(item)">Next Item for Live Selling</a>
+                                                            <a class="dropdown-item" href="javascript:void(0)" (click)="minerList(item.item_code)">Miner List</a>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr *ngIf="items.length === 0">
+                                                <td colspan="6" class="text-center">NO DATA</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<script>
+    // Initialize DataTables
+    $(document).ready(function() {
+        $('#itemTable').DataTable({
+            responsive: true,
+            paging: true,
+            searching: true,
+            ordering: true,
+            lengthChange: false,
+            pageLength: 10,
+            language: {
+                emptyTable: "NO DATA"
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

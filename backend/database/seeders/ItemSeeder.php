@@ -8,8 +8,6 @@ class ItemSeeder extends Seeder
 {
     public function run()
     {
-        //rand(1, 100)
-
         $items = [
             'Shirts' => [
                 'Casual Button-Up Shirt',
@@ -142,11 +140,13 @@ class ItemSeeder extends Seeder
             'Double Extra Large (XXL)'
         ];
 
+        $counter = 0;
         foreach ($items as $category => $products) {
-            echo "Category: $category\n";
             foreach ($products as $product) {
-                foreach($sizes as $size) {
-                    echo "- $product\n";
+                foreach ($sizes as $size) {
+                    if ($counter >= 100) {
+                        return;
+                    }
                     \App\Models\Item::create([
                         'item_name' => $product,
                         'item_description' => $product,
@@ -155,6 +155,7 @@ class ItemSeeder extends Seeder
                         'qty' => rand(1, 100),
                         'price' => rand(1, 500)
                     ]);
+                    $counter++;
                 }
             }
         }
