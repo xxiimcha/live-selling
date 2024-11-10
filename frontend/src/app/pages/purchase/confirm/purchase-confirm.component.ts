@@ -55,10 +55,12 @@ export class PurchaseConfirmComponent implements OnInit {
                 });
             }
         } else {
-            alert("Current Login User is not the one who purchased the item");
-            window.close();
+            // Clear session data and redirect to login page
+            localStorage.removeItem('currentUserEmail');
+            this.router.navigate(['/login']); // Replace '/login' with your actual login route
         }
     }
+
 
     calculateTotalAmount() {
         this.TotalAmount = this.item.price * this.item.qty;

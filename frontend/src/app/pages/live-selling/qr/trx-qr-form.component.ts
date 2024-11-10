@@ -16,6 +16,7 @@ export class TrxQrFormComponent implements OnInit {
     email: string = "";
     password: string = "";
     buildUrl: string = '';
+    qrDisplayUrl: string = '';
 
     constructor(
         private router: Router,
@@ -31,9 +32,13 @@ export class TrxQrFormComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.buildUrl = `http://192.168.254.158:4200/#/customer/purchase/confirm/${this.id}/${encodeURIComponent(this.email)}/${encodeURIComponent(this.password)}`;
-        const currentURL = encodeURIComponent(this.buildUrl);
-        this.currentURL = `http:/192.168.254.158:8000/api/open-in-desktop?url=${currentURL}`;
+        this.buildUrl = `http://localhost:4200/#/customer/purchase/confirm/${this.id}/${encodeURIComponent(this.email)}/${encodeURIComponent(this.password)}`;
+
+        const encodedURL = encodeURIComponent(this.buildUrl);
+        this.currentURL = `http://192.168.254.158:4200/api/open-in-desktop?url=${encodedURL}`;
+
+        // Set the URL for the QR display page
+        this.qrDisplayUrl = `http://localhost:4200/#/qr-display/${this.id}`;
     }
 
     navigateBack() {
@@ -51,21 +56,8 @@ export class TrxQrFormComponent implements OnInit {
         document.body.removeChild(a);
     }
 
-    _copyLink() {
-        console.log(navigator.clipboard);
-        navigator.clipboard.writeText(this.buildUrl);
-        alert("URL copied to clipboard!");
-    }
-
     copyLink() {
-        // Create a temporary input element
-        const tempInput = document.createElement('input');
-        tempInput.value = this.buildUrl;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-
-        alert("URL copied to clipboard!");
-      }
+        navigator.clipboard.writeText(this.qrDisplayUrl);
+        alert("QR Code page URL copied to clipboard!");
+    }
 }

@@ -15,7 +15,8 @@ import { ComponentsModule } from './components/components.module';
 import { QrCodeModule } from 'ng-qrcode';
 import { CustomerLayoutComponent } from './layouts/customer-layout/customer-layout.component';
 import { ChatModule } from './chat/chat.module';
-
+import { QrDisplayComponent } from './qr-display/qr-display.component';
+import { NgxQRCodeModule } from 'ngx-qrcode2';
 
 @NgModule({
 	imports: [
@@ -27,13 +28,15 @@ import { ChatModule } from './chat/chat.module';
 		RouterModule,
 		AppRoutingModule,
 		QrCodeModule,
-		ChatModule
+		ChatModule,
+    NgxQRCodeModule
 	],
 	declarations: [
 		AppComponent,
 		AdminLayoutComponent,
 		AuthLayoutComponent,
-		CustomerLayoutComponent
+		CustomerLayoutComponent,
+  QrDisplayComponent
 	],
 	providers: [],
 	bootstrap: [AppComponent]
